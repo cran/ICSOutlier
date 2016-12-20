@@ -1,0 +1,8 @@
+importFrom(graphics, plot, abline, text)
+importFrom(utils, data)
+importFrom(grDevices, grey)
+importFrom(mvtnorm, rmvnorm)
+import("stats","methods", "ICS","moments")
+exportClasses("icsOut")
+exportMethods("plot","summary","show")
+export(ics.distances,dist.simu.test,comp.norm.test,comp.simu.test,ics.outlier)
