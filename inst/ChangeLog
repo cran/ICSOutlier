@@ -1,5 +1,11 @@
 LOG of the CHANGES in the package ICSOutlier
 
+Version 0.3-0:
+
+- Modifying functions dist.simu.test and comp.simu.test to allow parallel computations.
+- Fixing a bug in the package to allow the users to properly modify the type of the quantile to be used. Some functions have now an arguemnt
+qtype.
+
 Version 0.2-0:
 
 First version released on CRAN

@@ -9,7 +9,8 @@ Identifies invariant coordinates that are nonnormal using simulations under a st
 }
 \usage{
 comp.simu.test(object, m = 10000, type = "smallprop", level = 0.05, 
-  adjust = TRUE, ...)
+  adjust = TRUE, ncores = NULL, iseed = NULL, pkg = "ICSOutlier", 
+  qtype = 7, ...)
 }
 
 \arguments{
@@ -19,6 +20,11 @@ comp.simu.test(object, m = 10000, type = "smallprop", level = 0.05,
   \item{type}{currently the only type option is \code{"smallprop"}. See details.}
   \item{level}{the initial level used to make a decision. The cut-off values are the (1-\code{level})th quantile of the eigenvalues obtained from simulations. See details.}
   \item{adjust}{logical. If \code{TRUE}, the quantiles levels are adjusted. Default is \code{TRUE}. See details. }
+  \item{ncores}{number of cores to be used. If \code{NULL} or 1, no parallel computing is used. Otherwise \link[parallel]{makeCluster} with \code{type = "PSOCK"} is used.}
+  \item{iseed}{If parallel computation is used the seed passed on to \code{\link[parallel]{clusterSetRNGStream}}. Default is NULL which means no fixed seed is used.}
+  \item{pkg}{When using parallel computing, a character vector listing all the packages which need to be loaded on the different cores via \code{\link{require}}. Must be at least "ICSOutlier"
+  and must contain the packages needed to compute the scatter matrices.}
+   \item{qtype}{specifies the quantile algorithm used in \code{\link{quantile}}.}
   \item{\dots}{further arguments passed on to the function \code{\link{quantile}}.}
 }
 \details{
@@ -33,7 +39,7 @@ these cut-off values. The precedure stops when an eigenvalue is below the corres
 If \code{adjust = FALSE} all eigenvalues are compared to the same (\code{1-level})th level of the quantile. This leads however often to too many selected components. 
 Therefore some multiple testing adjustment might be useful. The current default adjusts the quantile for the jth component as \code{1-level}/j. 
 
-Note that depending on the data size and scatters used this can take a while. 
+Note that depending on the data size and scatters used this can take a while and so it is more efficient to parallelize computations.
 Note also that the function is seldomly called directly by the user but internally by \code{\link{ics.outlier}}.
 
 }
@@ -60,6 +66,8 @@ Aurore Archimbaud and Klaus Nordhausen
 \code{\link[ICS]{ics2}}, \code{\link{comp.norm.test}}
 }
 \examples{
+# For a real analysis use larger values for m and more cores if available
+
 set.seed(123)
 Z <- rmvnorm(1000, rep(0, 6))
 # Add 20 outliers on the first component
@@ -67,13 +75,35 @@ Z[1:20, 1] <- Z[1:20, 1] + 10
 pairs(Z)
 icsZ <- ics2(Z)
 # For demo purpose only small m value, should select the first component
-comp.simu.test(icsZ, m = 400)
+comp.simu.test(icsZ, m = 400, ncores = 1)
+
+\dontrun{
+# For using two cores
+# For demo purpose only small m value, should select the first component
+comp.simu.test(icsZ, m = 500, ncores = 2, iseed = 123)
+  
+# For using several cores and for using a scatter function from a different package
+# Using the parallel package to detect automatically the number of cores
+library(parallel)
+# ICS with MCD estimates and the usual estimates
+# Need to create a wrapper for the CovMcd function to return first the location estimate
+# and the scatter estimate secondly.
+library(rrcov)
+myMCD <- function(x,...){
+  mcd <- CovMcd(x,...)
+  return(list(location = mcd@center, scatter = mcd@cov))
+}
+icsZmcd <- ics2(Z, S1 = myMCD, S2 = MeanCov, S1args = list(alpha = 0.75))
+# For demo purpose only small m value, should select the first component
+comp.simu.test(icsZmcd, m = 500, ncores = detectCores()-1, 
+               pkg = c("ICSOutlier", "rrcov"), iseed = 123)
+}
 
 # Example with no outlier
 Z0 <- rmvnorm(1000, rep(0, 6))
 pairs(Z0)
 icsZ0 <- ics2(Z0)
 #Should select no component
-comp.simu.test(icsZ0, m = 400, level = 0.01)
+comp.simu.test(icsZ0, m = 400, level = 0.01, ncores = 1)
 }
 \keyword{multivariate}

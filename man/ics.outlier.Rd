@@ -12,7 +12,8 @@ detected on these components. Currently the function is restricted to the case o
 \usage{
 ics.outlier(object, method = "norm.test", test = "agostino.test", mEig = 10000,
   level.test = 0.05, adjust = TRUE, level.dist = 0.025, mDist = 10000,
-  type = "smallprop", ...)
+  type = "smallprop", ncores = NULL, iseed = NULL, pkg = "ICSOutlier", 
+  qtype = 7, ...)
 }
 
 \arguments{
@@ -32,6 +33,11 @@ ics.outlier(object, method = "norm.test", test = "agostino.test", mEig = 10000,
                See \code{\link{dist.simu.test}} for details.}
   \item{type}{currently the only option is \code{"smallprop"} which means that only the first ICS components can be selected. See  \code{\link{comp.norm.test}}
 				or \code{\link{comp.simu.test}} for details.}
+  \item{ncores}{number of cores to be used in \code{\link{dist.simu.test}} and \code{\link{comp.simu.test}}. If \code{NULL} or 1, no parallel computing is used. Otherwise \link[parallel]{makeCluster} with \code{type = "PSOCK"} is used.}
+  \item{iseed}{If parallel computation is used the seed passed on to \code{\link[parallel]{clusterSetRNGStream}}. Default is NULL which means no fixed seed is used.}
+  \item{pkg}{When using parallel computing, a character vector listing all the packages which need to be loaded on the different cores via \code{\link{require}}. Must be at least "ICSOutlier"
+  and must contain the packages needed to compute the scatter matrices.}
+  \item{qtype}{specifies the quantile algorithm used in \code{\link{quantile}}.}
   \item{\dots}{passed on to other methods.}
 }
 \details{
@@ -72,20 +78,41 @@ library(REPPlab)
 data(ReliabilityData)
 icsReliabilityData <- ics2(ReliabilityData, S1 = tM, S2 = MeanCov)
 # For demo purpose only small mDist value, but as extreme quantiles 
-# are of interest mDist should be much larger.
-icsOutlierDA <- ics.outlier(icsReliabilityData, level.dist = 0.01, mDist = 50)
+# are of interest mDist should be much larger. Also number of cores used
+# should be larger if available
+icsOutlierDA <- ics.outlier(icsReliabilityData, level.dist = 0.01, mDist = 50, ncores = 1)
 icsOutlierDA
 summary(icsOutlierDA)
 plot(icsOutlierDA)
 
-
+\dontrun{
+# For using several cores and for using a scatter function from a different package
+# Using the parallel package to detect automatically the number of cores
+library(parallel)
+# ICS with MCD estimates and the usual estimates
+# Need to create a wrapper for the CovMcd function to return first the location estimate
+# and the scatter estimate secondly.
+data(HTP)
+library(rrcov)
+myMCD <- function(x,...){
+  mcd <- CovMcd(x,...)
+  return(list(location = mcd@center, scatter = mcd@cov))
+}
+icsHTP <- ics2(HTP, S1 = myMCD, S2 = MeanCov, S1args = list(alpha = 0.75))
+# For demo purpose only small m value, should select the first seven components
+icsOutlier <- ics.outlier(icsHTP, mEig = 50, level.test = 0.05, adjust = TRUE, 
+                          level.dist = 0.025, mDist = 50,
+                          ncores =  detectCores()-1, iseed = 123, 
+                          pkg = c("ICSOutlier", "rrcov"))
+icsOutlier
+}
   
 # Exemple of no direction and hence also no outlier
 set.seed(123)
 X = rmvnorm(500, rep(0, 2), diag(rep(0.1,2)))
 icsX <- ics2(X)
 icsOutlierJB <- ics.outlier(icsX, test = "jarque", level.dist = 0.01, 
-  level.test = 0.01, mDist = 100)
+				level.test = 0.01, mDist = 100, ncores = 1)
 summary(icsOutlierJB)
 plot(icsOutlierJB)
 rm(.Random.seed)
@@ -95,10 +122,10 @@ rm(.Random.seed)
 # Example of no outlier
 set.seed(123)
 X = matrix(rweibull(1000, 4, 4), 500, 2)
- X = apply(X,2, function(x){ifelse(x<5 & x>2, x, runif(sum(!(x<5 & x>2)), 5, 5.5))}) 
+X = apply(X,2, function(x){ifelse(x<5 & x>2, x, runif(sum(!(x<5 & x>2)), 5, 5.5))}) 
 icsX <- ics2(X)
 icsOutlierAG <- ics.outlier(icsX, test = "anscombe", level.dist = 0.01, 
-  level.test = 0.05, mDist = 100)
+				level.test = 0.05, mDist = 100, ncores = 1)
 summary(icsOutlierAG)
 plot(icsOutlierAG)
 rm(.Random.seed)

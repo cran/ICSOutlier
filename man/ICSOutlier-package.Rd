@@ -14,8 +14,8 @@ offers different methods to choose the appropriate components.
 \tabular{ll}{
 Package: \tab ICS\cr
 Type: \tab Package\cr
-Version: \tab 0.2-0\cr
-Date: \tab 2016-12-20\cr
+Version: \tab 0.3-0\cr
+Date: \tab 2018-02-03\cr
 License: \tab GPL (>= 2)\cr
 }
 
@@ -30,7 +30,7 @@ are under preparation.
 Aurore Archimbaud, Klaus Nordhausen, Anne Ruiz-Gazen
 
 Maintainer: 
-Klaus Nordhausen, \email{klaus.nordhausen@utu.fi}
+Klaus Nordhausen, \email{klaus.nordhausen@tuwien.ac.at}
 }
 
 \keyword{package}

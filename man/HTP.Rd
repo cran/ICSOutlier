@@ -31,8 +31,9 @@ boxplot(HTP)
 icsHTP <- ics2(HTP)
 # Selection of components based on a Normality Test, for demo purpose only small mDist value,
 # but as extreme quantiles are of interest mDist should be much larger.
+# Also more cores could be used if available.
 icsOutlierDA <- ics.outlier(icsHTP, test = "agostino.test", level.test = 0.05,
-                            level.dist = 0.02, mDist = 50)
+                            level.dist = 0.02, mDist = 50, ncores = 1)
 icsOutlierDA
 summary(icsOutlierDA)
 plot(icsOutlierDA)
