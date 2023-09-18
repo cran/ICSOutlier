@@ -5,7 +5,7 @@ function(object, method = "norm.test", test = "agostino.test", mEig = 10000, lev
         # choose method - interpolation should be added when available
         METHOD <- match.arg(method, c("norm.test", "simulation"))
         
-        if (class(object) != "ics2") stop("'object' must be of class ics2")
+        if (!inherits(object, "ics2")) stop("'object' must be of class ics2")
     
         S1 <- get(object@S1name)
         S2 <- get(object@S2name)

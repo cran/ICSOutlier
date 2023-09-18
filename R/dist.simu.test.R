@@ -2,7 +2,7 @@ dist.simu.test <- function(object, index, m = 10000, level = 0.025, ncores = NUL
     {
     LEVEL <- 1 - level
     nameObject <- deparse(substitute(object))
-    if (class(object) != "ics2")
+    if (!inherits(object, "ics2"))
         stop("'object' must be of class ics2")
     S1 <- get(object@S1name)
     S2 <- get(object@S2name)

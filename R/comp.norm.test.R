@@ -1,7 +1,7 @@
 comp.norm.test <-
 function(object, test = "agostino.test", type = "smallprop", level = 0.05, adjust = TRUE)
     {
-    if (class(object) != "ics2") stop("'object' must be of class ics2")
+    if (!inherits(object, "ics2")) stop("'object' must be of class ics2")
     test <- match.arg(test, c("jarque.test", "anscombe.test", "bonett.test", "agostino.test", "shapiro.test"))
     #type <- match.arg(type, c("smallprop", "cluster", "all"))
     type <- match.arg(type, c("smallprop"))

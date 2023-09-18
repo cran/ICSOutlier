@@ -30,7 +30,7 @@ ics.distances(object, index = NULL)
 A numeric vector containing the squared ICS distances.
 }
 \references{
- \cite{Archimbaud, A., Nordhausen, K. and Ruiz-Gazen, A. (2016), Multivariate Outlier Detection With ICS, <https://arxiv.org/abs/1612.06118>.}   
+  \cite{Archimbaud, A., Nordhausen, K. and Ruiz-Gazen, A. (2018), ICS for multivariate outlier detection with application to quality control. Computational Statistics & Data Analysis, 128:184-199. ISSN 0167-9473.  <https://doi.org/10.1016/j.csda.2018.06.011>.}   
 }
 \author{
 Aurore Archimbaud and Klaus Nordhausen

@@ -1,7 +1,7 @@
 comp.simu.test <- function(object, m = 10000, type = "smallprop",
 level = 0.05, adjust = TRUE, ncores = NULL, iseed = NULL, pkg = "ICSOutlier", qtype = 7, ...)
     {
-    if (class(object) != "ics2")
+    if (!inherits(object, "ics2"))
         stop("'object' must be of class ics2")
     S1 <- get(object@S1name)
     S2 <- get(object@S2name)

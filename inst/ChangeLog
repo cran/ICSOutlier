@@ -1,5 +1,11 @@
 LOG of the CHANGES in the package ICSOutlier
 
+Version 0.3-1:
+
+- updating some Rd files
+- changing the maintainer email
+- changing how it is evaluated of an object is of class ics2
+
 Version 0.3-0:
 
 - Modifying functions dist.simu.test and comp.simu.test to allow parallel computations.
