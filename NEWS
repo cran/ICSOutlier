@@ -1,0 +1,22 @@
+LOG of the CHANGES in the package ICSOutlier
+
+Version 0.4-0:
+
+- complete new implementation of ICS_outlier that uses S3 classes and methods and that calls the new function ICS from ICS package. From now on, function ICS_outlier should be used and function ics.outlier are to be avoided. For compatibility, the following functions comp_norm_test, comp_simu_test, dist_simu_test, ics_distances are also implemented and comp.norm.test, comp.simu.test, dist.simu.test and ics.distances are to be avoided.
+- adding the dataset HTP2 and HTP3
+
+Version 0.3-1:
+
+- updating some Rd files
+- changing the maintainer email
+- changing how it is evaluated of an object is of class ics2
+
+Version 0.3-0:
+
+- Modifying functions dist.simu.test and comp.simu.test to allow parallel computations.
+- Fixing a bug in the package to allow the users to properly modify the type of the quantile to be used. Some functions have now an arguemnt
+qtype.
+
+Version 0.2-0:
+
+- First version released on CRAN

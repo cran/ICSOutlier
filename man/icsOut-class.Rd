@@ -33,7 +33,7 @@ For this class the following generic functions are available: \code{\link{print.
 }
 
 \section{Note}{
-In case no extractor function for the slots exists, the component can be extracted the usual way using '@'.
+In case no extractor function for the slots exists, the component can be extracted the usual way using '@'. This S4 class is created by  \code{\link{ics.outlier}} that reached the end of its lifecycle, please use  \code{\link{ICS_outlier}} instead for which an object of class S3 is returned. In future versions,  \code{\link{ics.outlier}} will be deprecated and eventually removed.
 }
 
 \author{Aurore Archimbaud and Klaus Nordhausen}

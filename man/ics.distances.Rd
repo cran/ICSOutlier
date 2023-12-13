@@ -29,6 +29,11 @@ ics.distances(object, index = NULL)
 \value{
 A numeric vector containing the squared ICS distances.
 }
+
+\note{
+Function \code{ics.distances()} reached the end of its lifecycle, please use \code{\link{ics_distances}} instead. In future versions, \code{ics_distances()} will be deprecated and eventually removed.
+}
+
 \references{
   \cite{Archimbaud, A., Nordhausen, K. and Ruiz-Gazen, A. (2018), ICS for multivariate outlier detection with application to quality control. Computational Statistics & Data Analysis, 128:184-199. ISSN 0167-9473.  <https://doi.org/10.1016/j.csda.2018.06.011>.}   
 }

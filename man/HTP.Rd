@@ -2,7 +2,7 @@
 \alias{HTP}
 \docType{data}
 \title{
-Production Measurements of High-Tech Parts
+Production Measurements of High-Tech Parts - Full Rank Case
 }
 \description{
 The \code{HTP} data set contains 902 high-tech parts designed for consumer products characterized by 88 tests. These tests are performed to ensure a high quality 

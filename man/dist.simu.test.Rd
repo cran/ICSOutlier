@@ -41,6 +41,10 @@ A vector with the values of the (1-\code{level})th quantile.
 
 }
 
+\note{
+Function \code{\link{dist.simu.test}} reached the end of its lifecycle, please use \code{\link{dist_simu_test}} instead. In future versions, \code{\link{dist.simu.test}} will be deprecated and eventually removed.
+}
+
 \references{
  \cite{Archimbaud, A., Nordhausen, K. and Ruiz-Gazen, A. (2018), ICS for multivariate outlier detection with application to quality control. Computational Statistics & Data Analysis, 128:184-199. ISSN 0167-9473.  <https://doi.org/10.1016/j.csda.2018.06.011>.}   
 }

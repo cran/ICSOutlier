@@ -42,7 +42,9 @@ Note that the function is seldomly called directly by the user but internally by
   \item{type}{\code{type} used.}
   %\item{m}{number of iterations \code{m} used in the simulations.}
 }
-
+\note{
+Function \code{\link{comp.norm.test}} reached the end of its lifecycle, please use \code{\link{comp_norm_test}} instead. In future versions, \code{\link{comp.norm.test}} will be deprecated and eventually removed.
+}
 
 \references{
  \cite{Archimbaud, A., Nordhausen, K. and Ruiz-Gazen, A. (2018), ICS for multivariate outlier detection with application to quality control. Computational Statistics & Data Analysis, 128:184-199. ISSN 0167-9473.  <https://doi.org/10.1016/j.csda.2018.06.011>.}   
