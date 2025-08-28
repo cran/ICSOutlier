@@ -1,6 +1,6 @@
-2c5014acc0f3a5a429f97a91d158b5e6 *DESCRIPTION
+a6fe57826e98d7a5f1531d737a1e2517 *DESCRIPTION
 0da6fc0687d864dead492aac91543e27 *NAMESPACE
-4b1eaffc27830cae70acbf60a33e3880 *NEWS
+e672f04e4e86425839f7d4de3b7fd8b2 *NEWS
 8a8899099e5bc92e69aede5cee6cb092 *R/ICSOutlier-package.R
 d905e42549820c0bf27de2e7ad0356ed *R/comp.norm.test.R
 a689a38443de643e5c54c6cbf3dce96b *R/comp.simu.test.R
@@ -10,7 +10,7 @@ df4732d6fde1b1933d53611c2a08e48e *R/dist.simu.test.internal.R
 07d1d5a03b997a6a7a7c31773146a653 *R/ics.distances.R
 e67fb5a44c0e86d8429c5de9284c0cb8 *R/ics.outlier.R
 0591ffc909b7174587efb4f3e492c8ad *R/icsOut-class.R
-8108f0d8b4752716ac0ec47dda767065 *build/partial.rdb
+a8af439471cf123b46a39cfb5dd801e4 *build/partial.rdb
 bbfed7d63be13d42df976ea318ddcdc3 *data/HTP.rda
 80780ed20cc9ed486f208aa4a7feca2c *data/HTP2.rda
 822ada0f051598361c4e860a0ac79eb5 *data/HTP3.rda
@@ -26,9 +26,9 @@ cfc7e4fc79180982defaff937834b9d6 *man/comp.norm.test.Rd
 515d2666a878683239707186faf0f2d7 *man/comp_simu_test.Rd
 eebf4b45840208c7d949babc88d5fc87 *man/dist.simu.test.Rd
 3761ecde0f15292aa3d7d9bd577e3f3a *man/dist_simu_test.Rd
-660466bb0c3d0cab37e15dcffb2c00ff *man/ics.distances.Rd
+5fa4314918279569641e4318f1a31e9e *man/ics.distances.Rd
 ff4b18512562247804e9d0fb32d74056 *man/ics.outlier.Rd
-a6e86b3d6cdedcebbca2628443ef91fa *man/icsOut-class.Rd
+caa54d4c45431b53b9b7416c4b183f9c *man/icsOut-class.Rd
 3f4a106397162b194277e0febb9ef06f *man/ics_distances.Rd
 cf8210a9ef17eb253c1cf7ceb99dbdfd *man/plot.ICS_Out.Rd
 b241b3ba618a6662e69fbe4d479ed945 *man/plot.icsOut.Rd

@@ -1,5 +1,10 @@
 LOG of the CHANGES in the package ICSOutlier
 
+
+Version 0.4-1:
+
+- fixing some broken links in the documentation
+
 Version 0.4-0:
 
 - complete new implementation of ICS_outlier that uses S3 classes and methods and that calls the new function ICS from ICS package. From now on, function ICS_outlier should be used and function ics.outlier are to be avoided. For compatibility, the following functions comp_norm_test, comp_simu_test, dist_simu_test, ics_distances are also implemented and comp.norm.test, comp.simu.test, dist.simu.test and ics.distances are to be avoided.

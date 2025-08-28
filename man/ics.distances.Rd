@@ -18,7 +18,7 @@ ics.distances(object, index = NULL)
 }
 \details{
 	For outlier detection, the squared ICS distances can be used as a measure of outlierness. Denote as \eqn{Z}
-    the invariant coordinates centered with the location estimate specified in \code{S1} (for details see \code{\link{ics2}}).
+    the invariant coordinates centered with the location estimate specified in \code{S1} (for details see \code{\link[ICS]{ics2}}).
     Let \eqn{Z_k} be the \eqn{k} components of \eqn{Z} selected by \code{index}, then the ICS distance of the observation \eqn{i} 
     is defined as: 
 	\deqn{ICSD^2(x_i,k) = || Z_k||^2.}{ICSD^2(x_i,k) = || Z_k||^2.}

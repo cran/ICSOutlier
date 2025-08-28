@@ -29,7 +29,7 @@ Objects can be created by calls of the form \code{new("icsOut", ...)}. But usual
                                   
 }
 \section{Methods}{
-For this class the following generic functions are available: \code{\link{print.icsOut}}, \code{\link{summary.icsOut}} and \code{\link{plot.ics}}
+For this class the following generic functions are available: \code{\link{print.icsOut}}, \code{\link{summary.icsOut}} and \code{\link[ICS]{plot.ics}}
 }
 
 \section{Note}{
